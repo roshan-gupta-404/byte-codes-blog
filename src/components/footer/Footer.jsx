@@ -12,9 +12,9 @@ function Footer() {
 
   return (
     <>
-      <footer className="">
+      <footer className="p-4">
         <Container>
-        <div className="flex justify-between text-white bottom-0 px-2">
+        <div className="flex justify-between text-white bottom-0 px-4">
           <div>
             <p> &copy; 2024 ByteCodes Blog. All rights reserved.</p>
           </div>
