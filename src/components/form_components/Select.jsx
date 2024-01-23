@@ -1,6 +1,6 @@
 import React, { useId } from 'react'
 
-function Select({options=[],label,className = '', ...props}) {
+function Select({options=[],label,className = '', ...props},ref) {
     const id = useId()
 
   return (
@@ -8,6 +8,7 @@ function Select({options=[],label,className = '', ...props}) {
     {label && <label htmlFor={id} className='text-white inline-block mb-2 pl-1 text-xl'>{label}</label>}
     <select 
     className={`rounded-md px-4 w-full h-10 bg-transparent border border-gray-700 text-white ${className}`} 
+    ref={ref}
     id={id}
     {...props}
     >
@@ -16,10 +17,9 @@ function Select({options=[],label,className = '', ...props}) {
         {option}
       </option>
     ))}
-    
     </select>
     </div>
   )
 }
-export default Select
-// export default React.forwardRef(Select) // another way of forward referencing
+// export default Select
+export default React.forwardRef(Select) // another way of forward referencing

@@ -1,9 +1,11 @@
 import React from 'react'
 
-function Button({children,className}) {
+function Button({children,className, ...props}) {
   return (
     <div>
-        <button className={className}>
+        <button className={className}
+        {...props}
+        >
             {children}
         </button>
     </div>

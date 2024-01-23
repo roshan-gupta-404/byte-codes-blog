@@ -1,8 +1,14 @@
 import React from 'react'
 import Container from './Container'
 import Input from './form_components/Input'
+import { useForm } from 'react-hook-form'
+import Button from './form_components/Button'
 
 function Login() {
+    const {register, handleSubmit} = useForm()
+    const submit = async(data)=>{
+        console.log(data);
+    }
     return (
         <div>
             <Container>
@@ -17,16 +23,24 @@ function Login() {
                         </span>
                     </div>
 
-                    <form className='w-4/5 mx-auto'>
+                    <form className='w-4/5 mx-auto' onSubmit={handleSubmit(submit)}>
                         <Input
                             type={'email'}
                             label='Email:-'
                             placeholder='Enter your Email'
+                            {...register('email')}
                         />
                         <Input
+                            type={'password'}
                             label='Password:-'
                             placeholder='Enter your Password'
+                            {...register('password')}
                         />
+                        <Button
+                            className={`text-white text-2xl block font-semibold my-4 bg-blue-700 w-1/2 mx-auto p-1 rounded-md hover:bg-blue-800`}
+                        >
+                            {'Submit'}
+                        </Button>
                     </form>
                 </div>
             </Container>
