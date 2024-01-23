@@ -1,5 +1,5 @@
 import React from 'react'
-import Container from './Container'
+import {Container} from '../components/Index'
 
 
 function Post() {
@@ -17,7 +17,7 @@ function Post() {
                             <div className=' w-80 absolute -translate-y-60 rounded-xl overflow-hidden'>
                                 <img src='images/img1.jpeg' />
                             </div>
-                            <div className='w-3/4 mt-20 mb-8'>
+                            <div className='w-3/4 mt-20 mb-8 text-justify'>
                                 What is GitHub and why it is used?
                                 GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere. This tutorial teaches you GitHub essentials like repositories, branches, commits, and pull requests.
 

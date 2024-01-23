@@ -1,18 +1,24 @@
-import Container from "./components/Container"
-import Post from "./components/Post"
-import Footer from "./components/footer/Footer"
 import Header from "./components/header/Header"
-import Main from "./components/main/Main"
+import Footer from "./components/footer/Footer"
+// import Container from "./components/Container"
+import AddPost from "./pages/AddPost"
+import Signup from "./pages/Signup"
+import Login from "./pages/Login"
+import Post from "./pages/Post"
+import Home from "./pages/Home"
 
 function App() {
 
   return (
     <>
-      <div className="bg-gray-950">
+      <div className="min-h-screen bg-gray-950">
           
           <Header/>
-          {/* <Main/> */}
-          <Post/>
+          <Home/>
+          {/* <Post/>
+          <AddPost/>
+          <Signup/>
+          <Login/> */}
           <Footer/>
           
       </div>
