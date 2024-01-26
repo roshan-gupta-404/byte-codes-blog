@@ -5,7 +5,8 @@ import Button from './form_components/Button'
 import { useForm } from 'react-hook-form'
 
 function Signup() {
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit, formState} = useForm()
+    const {errors} = formState
     const submit = async(data)=>{
         console.log(data);
     }
@@ -13,7 +14,7 @@ function Signup() {
         <div className='my-4'>
             <Container>
                 <div className='text-white w-2/5 mx-auto border border-gray-700 rounded-2xl bg-slate-900'>
-                    <div className="mb-2 flex flex-col items-center mt-4">
+                    <div className="mb-4 flex flex-col items-center mt-4">
                         <span className="inline-block w-fit text-xl">
                             ByteCodes Blog
                         </span>
@@ -27,25 +28,49 @@ function Signup() {
                         <Input
                             label='Name:-'
                             placeholder='Enter your name'
-                            {...register('name',{require:true})}
+                            {...register('name',{
+                                    required: {
+                                        value: true,
+                                        message: "Field is required",
+                                    },
+                                })}
                         />
+                        {<span className='text-red-500'> &nbsp; {errors.name?.message}</span>}
                         <Input
                             label='Email:-'
                             type={'email'}
                             placeholder='Enter your Email'
-                            {...register('email')}
+                            {...register('email',{
+                                    required: {
+                                        value: true,
+                                        message: "Field is required",
+                                    },
+                                })}
                         />
+                        {<span className='text-red-500'> &nbsp; {errors.email?.message}</span>}
                         <Input
                             label='Password:-'
                             type={'password'}
                             placeholder='Enter your Password'
-                            {...register('password')}
+                            {...register('password',{
+                                    required: {
+                                        value: true,
+                                        message: "Field is required",
+                                    },
+                                })}
                         />
+                        {<span className='text-red-500'> &nbsp; {errors.password?.message}</span>}
                         <Input
                             label='Auth Key:-'
                             placeholder='Enter your Auth Key'
-                            {...register('auth_key')}
+                            {...register('auth_key',{
+                                    required: {
+                                        value: true,
+                                        message: "Field is required",
+                                    },
+                                })}
                         />
+                        {<span className='text-red-500'> &nbsp; {errors.auth_key?.message}</span>}
                         <Button
                             className={`text-white text-2xl block font-semibold my-4 bg-blue-700 w-1/2 mx-auto p-1 rounded-md hover:bg-blue-800`}
                         >

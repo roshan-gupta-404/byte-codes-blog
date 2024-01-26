@@ -1,9 +1,9 @@
 import React, { useId } from 'react'
 
-function Input({ label, placeholder, type = 'text', className, disableStatus = false, ...props },ref) {
+function Input({ label,placeholder, type = 'text', className, disableStatus = false, ...props },ref) {
   const id = useId();
   return (
-    <div className='my-6'>
+    <>
       {label && <label className='text-white inline-block mb-2 pl-1 text-xl'
       htmlFor={id}
       >
@@ -18,7 +18,7 @@ function Input({ label, placeholder, type = 'text', className, disableStatus = f
         ref={ref}
         {...props}
       />
-    </div>
+    </>
   )
 }
 

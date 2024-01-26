@@ -6,9 +6,9 @@ import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import Post from "./pages/Post"
 import Home from "./pages/Home"
+// import conf from "./conf/conf"
 
 function App() {
-
   return (
     <>
       <div className="min-h-screen bg-gray-950">
@@ -16,9 +16,9 @@ function App() {
           <Header/>
           {/* <Home/> */}
           {/* <Post/> */}
-          {/* <AddPost/> */}
+          <AddPost/>
           {/* <Signup/> */}
-          <Login/>
+          {/* <Login/>  */}
           <Footer/>
           
       </div>
