@@ -1,5 +1,6 @@
 import React from 'react'
 import Container from '../Container'
+import { Link } from 'react-router-dom'
 
 function Header() {
     return (
@@ -13,15 +14,21 @@ function Header() {
 
                 <div className=''>
                     <ul className='flex ml-auto'>
+                    <Link to={"/"}>
                         <li className='mx-2'>
                             Home
                         </li>
+                        </Link>
+                        <Link to={"/signup"}>
                         <li className='mx-2'>
-                            All Post
+                            Sign Up
                         </li>
+                        </Link>
+                        <Link to={"/login"}>
                         <li className='mx-2'>
                             Login
                         </li>
+                        </Link>
                     </ul>
                 </div>
 

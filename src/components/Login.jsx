@@ -7,7 +7,6 @@ import Button from './form_components/Button'
 function Login() {
     const { register, handleSubmit, formState } = useForm()
     const { errors } = formState
-    console.log(errors);
     const submit = async (data) => {
         console.log(data);
     }

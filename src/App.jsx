@@ -6,6 +6,7 @@ import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import Post from "./pages/Post"
 import Home from "./pages/Home"
+import { Outlet } from "react-router-dom"
 // import conf from "./conf/conf"
 
 function App() {
@@ -14,11 +15,9 @@ function App() {
       <div className="min-h-screen bg-gray-950">
           
           <Header/>
-          {/* <Home/> */}
-          {/* <Post/> */}
-          <AddPost/>
-          {/* <Signup/> */}
-          {/* <Login/>  */}
+          <main>
+            <Outlet/>
+          </main>
           <Footer/>
           
       </div>
