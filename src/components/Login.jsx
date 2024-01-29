@@ -3,12 +3,33 @@ import Container from './Container'
 import Input from './form_components/Input'
 import { useForm } from 'react-hook-form'
 import Button from './form_components/Button'
+import authServices from '../appwrite/auth'
+import { useDispatch } from 'react-redux'
+import { login } from '../store/authSlice'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
     const { register, handleSubmit, formState } = useForm()
     const { errors } = formState
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const submit = async (data) => {
         console.log(data);
+        try {
+            const sessions = await authServices.login(data)
+            console.log(sessions);
+            if (sessions) {
+                const userData = await authServices.getCurrentUser()
+                if(userData){
+                    dispatch(login(userData))
+                    navigate('/')
+                }
+            }
+        } catch (error) {
+            throw error
+        }
+
     }
     return (
         <div>

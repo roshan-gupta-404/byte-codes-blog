@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Container from '../Container'
 import PostCard from '../PostCard'
 // import img1 from './img1.jpeg'
+// import { useSelector } from 'react-redux'
+// import authServices from '../../appwrite/auth'
 
 function Main() {
+    
     return (
         <div className='text-white my-4'>
             <Container>

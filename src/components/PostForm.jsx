@@ -5,13 +5,18 @@ import TextArea from './form_components/TextArea';
 import Button from './form_components/Button';
 import RTE from './form_components/RTE';
 import { useForm } from 'react-hook-form';
+import services from '../appwrite/config';
 
 function PostForm() {
     const { register, handleSubmit, control, formState, watch, setValue, getValues } = useForm()
     const { errors } = formState
-    console.log(errors);
-    const submit = (data) => {
+    // console.log(errors);
+    const submit = async(data) => {
         console.log(data);
+    //    const file =  await services.uploadFile(data.featured_image[0])
+    //    console.log(file);
+    //    data.featured_image = 'changed'
+    //    console.log(data);
     }
 
     const slugTransform = useCallback((value) => {

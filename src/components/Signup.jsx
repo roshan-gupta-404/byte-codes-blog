@@ -1,15 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Input from './form_components/Input'
 import Container from './Container'
 import Button from './form_components/Button'
 import { useForm } from 'react-hook-form'
+import authServices from '../appwrite/auth'
+import { useDispatch } from 'react-redux'
+import {login} from '../store/authSlice'
+import { useNavigate } from 'react-router-dom'
 
 function Signup() {
+    // (async ()=>{
+    //     const currentUser = await authServices.getCurrentUser()
+    //     console.log(currentUser);
+    // })()
     const {register, handleSubmit, formState} = useForm()
+    const [submissionError , setSubmissionError] = useState()
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     const {errors} = formState
+
     const submit = async(data)=>{
-        console.log(data);
+        setSubmissionError("")
+       const user = await authServices.createAccount(data)
+       if(user){
+        const userData = await authServices.getCurrentUser()
+        if(userData){
+            // TODO: dispatch user data
+            dispatch(login({userData}))
+            // navigate the user to home
+            navigate('/')
+        }
+       }
+       console.log(data)
     }
+    
     return (
         <div className='my-4'>
             <Container>

@@ -7,21 +7,39 @@ import Login from "./pages/Login"
 import Post from "./pages/Post"
 import Home from "./pages/Home"
 import { Outlet } from "react-router-dom"
-// import conf from "./conf/conf"
+import { useDispatch, useSelector } from 'react-redux'
+import authServices from './appwrite/auth'
+import {login,logout} from './store/authSlice'
+import { useEffect } from "react"
 
 function App() {
+  // const userData = useSelector((state) => state.user)
+  // console.log(userData);
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    authServices.getCurrentUser().then((userData) => {
+      if(userData){
+        dispatch(login(userData))
+      }
+      else{
+        dispatch(logout())
+      }
+    })
+  }, [])
+
   return (
     <>
       <div className="min-h-screen bg-gray-950">
-          
-          <Header/>
-          <main>
-            <Outlet/>
-          </main>
-          <Footer/>
-          
+
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+
       </div>
-      
+
     </>
   )
 }
