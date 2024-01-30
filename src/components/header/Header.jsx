@@ -6,6 +6,9 @@ import { useSelector } from 'react-redux'
 
 function Header() {
     const authStatus = useSelector((state)=>state.status)
+    // const user = useSelector((state)=>state.user)
+    // console.log(authStatus);
+    // console.log(user);
     return (
         <header className='bg-gray-950 text-white  text-2xl'>
             <Container>
@@ -30,6 +33,11 @@ function Header() {
                             <Link to={"/login"}>
                                 <li className='mx-2 hover:text-yellow-500 duration-300'>
                                     Login
+                                </li>
+                            </Link>
+                            <Link to={"/add-post"}>
+                                <li className='mx-2 hover:text-yellow-500 duration-300'>
+                                    AddPost
                                 </li>
                             </Link>
                             {authStatus && <LogoutBtn/>}

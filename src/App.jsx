@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     authServices.getCurrentUser().then((userData) => {
       if(userData){
-        dispatch(login(userData))
+        dispatch(login({userData}))
       }
       else{
         dispatch(logout())

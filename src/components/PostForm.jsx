@@ -6,17 +6,63 @@ import Button from './form_components/Button';
 import RTE from './form_components/RTE';
 import { useForm } from 'react-hook-form';
 import services from '../appwrite/config';
+import { useSelector } from 'react-redux';
 
-function PostForm() {
-    const { register, handleSubmit, control, formState, watch, setValue, getValues } = useForm()
+function PostForm({post}) {
+    const { register, handleSubmit, control, formState, watch, setValue, getValues } = useForm({
+                                                                                                defaultValues: {
+                                                                                                    title: post?.title || '',
+                                                                                                    slug: post?.slug || '',
+                                                                                                    content: post?.content || '',
+                                                                                                    status: post?.status || 'active',
+                                                                                                    description: post?.description || '',
+                                                                                                }
+    })
     const { errors } = formState
+    const userData = useSelector((state) => state.user)
+
+    console.log(userData);
     // console.log(errors);
-    const submit = async(data) => {
-        console.log(data);
-    //    const file =  await services.uploadFile(data.featured_image[0])
-    //    console.log(file);
-    //    data.featured_image = 'changed'
-    //    console.log(data);
+
+    const submit = async (data) => {
+        if(post){
+            // if post is recieved as a param then this means we have to update the post
+            const file = await (data.featured_image[0]? services.uploadFile(data.featured_image[0]):null)
+            if(file){
+                // deleting the old image
+                await services.deleteFile(post.featured_image)
+            }
+            const updatePost = await services.updatePost(post.$id,{...data, featured_image:file? file.$id: undefined}) // TODO: check its working
+            if (updatePost) {
+                navigate(`/post/${updatePost.$id}`)     // agar ./post/dbpost.id denge to wo current page ke ander post/dbpost.id dhundhega.
+            }
+        }
+        else{
+            console.log(data);
+            try {
+                // first uplaod image.
+                const file = await services.uploadFile(data.featured_image[0])
+                console.log(file);
+    
+                // then upload post.
+                if (file) {
+                    data.featured_image = file.$id;
+                    const postUploaded = await services.createPost({ ...data, user_id: userData.$id, date: (new Date().toLocaleString()) })
+                    if (postUploaded) {
+                        console.log(postUploaded);
+                        console.log('post uploaded');
+                    }
+                }
+            } catch (error) {
+                throw error
+            }
+        }
+
+        // then upload post.
+        //    const file =  await services.uploadFile(data.featured_image[0])
+        //    console.log(file);
+        //    data.featured_image = 'changed'
+        //    console.log(data);
     }
 
     const slugTransform = useCallback((value) => {
@@ -59,6 +105,7 @@ function PostForm() {
 
                     <div className=''>
                         <Input
+                            disableStatus={true}
                             label='Slug:-'
                             placeholder='Slug'
                             {...register('slug', {
@@ -78,6 +125,7 @@ function PostForm() {
                         label={'Content:-'}
                         name={'content'}
                         control={control}
+                        defaultValue={getValues('content')}
                     />
                 </div>
 
@@ -89,7 +137,7 @@ function PostForm() {
                             className={`pt-1 text`}
                             {...register('featured_image', {
                                 required: {
-                                    value: true,
+                                    value: !post,
                                     message: "Field is required",
                                 },
                             })}
@@ -101,7 +149,7 @@ function PostForm() {
                         <Select
                             options={["Active", "Inactive"]}
                             label={'Status:-'}
-                            {...register('option', {
+                            {...register('status', {
                                 required: {
                                     value: true,
                                     message: "Field is required",

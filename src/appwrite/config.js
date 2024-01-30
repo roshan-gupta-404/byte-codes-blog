@@ -73,7 +73,7 @@ export class Services{
 
     async uploadFile(file){
         try {
-            return await this.storage.createFile(conf.appwriteBucketId, ID.unique(), file)
+            return await this.storage.createFile(conf.appwriteBucketId, ID.unique(), file) //returns file $id, bucketId , etc.
         } catch (error) {
             console.log("Appwrite service :: uploadFile :: error", error); 
             return false            
