@@ -18,7 +18,7 @@ function PostForm({post}) {
                                                                                                     description: post?.description || '',
                                                                                                 }
     })
-    const { errors } = formState
+    const { errors } = formState // this cause rerendering of component when form is submitted.
     const userData = useSelector((state) => state.user)
 
     console.log(userData);

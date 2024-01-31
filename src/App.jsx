@@ -10,12 +10,13 @@ import { Outlet } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import authServices from './appwrite/auth'
 import {login,logout} from './store/authSlice'
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 function App() {
   // const userData = useSelector((state) => state.user)
   // console.log(userData);
   const dispatch = useDispatch()
+  const [loading, setLoading] = useState(true)
   
   useEffect(() => {
     authServices.getCurrentUser().then((userData) => {
@@ -26,21 +27,22 @@ function App() {
         dispatch(logout())
       }
     })
+    .finally(()=>setLoading(false))
   }, [])
 
-  return (
-    <>
-      <div className="min-h-screen bg-gray-950">
+  return ( !loading ? (<>
+    <div className="min-h-screen bg-gray-950">
 
-        <Header />
-        <main>
-          <Outlet />
-        </main>
-        <Footer />
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
 
-      </div>
+    </div>
 
-    </>
+  </>): null
+    
   )
 }
 

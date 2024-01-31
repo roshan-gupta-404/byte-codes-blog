@@ -15,7 +15,7 @@ function Post() {
                         </div>
                         <div className='bg-slate-900 flex flex-col items-center pt-40'>
                             <div className=' w-80 absolute -translate-y-60 rounded-xl overflow-hidden'>
-                                <img src='images/img1.jpeg' />
+                                <img src='/images/img1.jpeg' />
                             </div>
                             <div className='w-3/4 mt-20 mb-8 text-justify'>
                                 What is GitHub and why it is used?

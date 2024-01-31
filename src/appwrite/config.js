@@ -50,6 +50,7 @@ export class Services{
             return false
             
         }
+        //TODO: we can improve the security by asking the user_id and doing a query on it.
     }
 
     async getAllPosts(){
@@ -90,9 +91,9 @@ export class Services{
         }
     }
 
-    async getFilePreview(fileId){
+    getFilePreview(fileId){
         try {
-            return await this.storage.getFilePreview(conf.appwriteBucketId, fileId) // TODO:  add params for compressed images
+            return this.storage.getFilePreview(conf.appwriteBucketId, fileId) // TODO:  add params for compressed images
         } catch (error) {
             console.log("Appwrite service :: deleteFile :: error", error); 
             return false            
