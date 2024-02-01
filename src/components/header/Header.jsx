@@ -6,6 +6,28 @@ import { useSelector } from 'react-redux'
 
 function Header() {
     const authStatus = useSelector((state)=>state.status)
+    const navItems = [
+        {
+          name: 'Home',
+          slug: "/",
+          active: true
+        },
+        {
+          name: 'Login',
+          slug: "/login",
+          active: !authStatus
+        },
+        {
+          name: 'Signup',
+          slug: "/signup",
+          active: !authStatus
+        },
+        {
+          name: 'Add Posts',
+          slug: "/add-post",
+          active: authStatus
+        }
+      ]
     // const user = useSelector((state)=>state.user)
     // console.log(authStatus);
     // console.log(user);
@@ -20,7 +42,16 @@ function Header() {
 
                     <div className=''>
                         <ul className='flex ml-auto'>
-                            <Link to={"/"}>
+                        {navItems.map((menu)=>(
+                            menu.active ?
+                            (<Link key={menu.name} to={menu.slug}>
+                                <li className='mx-2 hover:text-yellow-500 duration-300'>
+                                    {menu.name}
+                                </li>
+                            </Link>)
+                            : null
+                        ))}
+                            {/* <Link to={"/"}>
                                 <li className='mx-2 hover:text-yellow-500 duration-300'>
                                     Home
                                 </li>
@@ -34,12 +65,12 @@ function Header() {
                                 <li className='mx-2 hover:text-yellow-500 duration-300'>
                                     Login
                                 </li>
-                            </Link>
-                            <Link to={"/add-post"}>
+                            </Link> */}
+                            {/* <Link to={"/add-post"}>
                                 <li className='mx-2 hover:text-yellow-500 duration-300'>
                                     AddPost
                                 </li>
-                            </Link>
+                            </Link> */}
                             {authStatus && <LogoutBtn/>}
                         </ul>
                     </div>

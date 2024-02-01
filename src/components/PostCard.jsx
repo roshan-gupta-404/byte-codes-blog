@@ -17,7 +17,6 @@ function PostCard({$id, description, title, slug, date, featured_image}) {
       
         return parsedDate;
       }
-      console.log(services.getFilePreview(featured_image));
     return (
         <>
         <Link to={`/post/${slug}`}>

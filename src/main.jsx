@@ -11,7 +11,7 @@ import Signup from './pages/Signup.jsx'
 import Post from './pages/Post.jsx'
 import AddPost from './pages/AddPost.jsx'
 import EditPost from './pages/EditPost.jsx'
-// import AuthLayout from './components/AuthLayout.jsx'
+import AuthLayout from './components/AuthLayout.jsx'
 
 
 const router = createBrowserRouter([
@@ -26,40 +26,36 @@ const router = createBrowserRouter([
         {
             path: "/login",
             element: (
-              // user doesn't require to be authenticate to access the login page. thats why authentication is pased false.
-              //  <AuthLayout authentication={false}> 
-              //       <Login />
-              //   </AuthLayout>
+              // user doesn't require to be authenticate to access the login page. thats why authenticationRequired is pased false.
+               <AuthLayout authenticationRequired={false}> 
                     <Login />
+                </AuthLayout>
             ),
         },
         {
             path: "/signup",
             element: (
-                // <AuthLayout authentication={false}>
-                //     <Signup />
-                // </AuthLayout>
+                <AuthLayout authenticationRequired={false}>
                     <Signup />
+                </AuthLayout>
             ),
         },
         {
             path: "/add-post",
             element: (
-                // <AuthLayout authentication>
-                //     {" "}
-                //     <AddPost />
-                // </AuthLayout>
-                <AddPost />
+                <AuthLayout authenticationRequired>
+                    {" "}
+                    <AddPost />
+                </AuthLayout>
             ),
         },
         {
             path: "/edit-post/:slug",
             element: (
-                // <AuthLayout authentication>
-                //     {" "}
-                //     <EditPost />
-                // </AuthLayout>
-                <EditPost />
+                <AuthLayout authenticationRequired>
+                    {" "}
+                    <EditPost />
+                </AuthLayout>
             ),
         },
         {
