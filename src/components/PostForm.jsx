@@ -7,6 +7,7 @@ import RTE from './form_components/RTE';
 import { useForm } from 'react-hook-form';
 import services from '../appwrite/config';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function PostForm({post}) {
     const { register, handleSubmit, control, formState, watch, setValue, getValues } = useForm({
@@ -20,6 +21,8 @@ function PostForm({post}) {
     })
     const { errors } = formState // this cause rerendering of component when form is submitted.
     const userData = useSelector((state) => state.user)
+
+    const navigate = useNavigate()
 
     const submit = async (data) => {
         if(post){
@@ -38,28 +41,19 @@ function PostForm({post}) {
             console.log(data);
             try {
                 // first uplaod image.
-                const file = await services.uploadFile(data.featured_image[0])
-                console.log(file);
-    
+                const file = await services.uploadFile(data.featured_image[0])    
                 // then upload post.
                 if (file) {
                     data.featured_image = file.$id;
                     const postUploaded = await services.createPost({ ...data, user_id: userData.$id, date: (new Date().toLocaleString()) })
                     if (postUploaded) {
-                        console.log(postUploaded);
-                        console.log('post uploaded');
+                       navigate(`/post/${postUploaded.slug}`) 
                     }
                 }
             } catch (error) {
                 throw error
             }
         }
-
-        // then upload post.
-        //    const file =  await services.uploadFile(data.featured_image[0])
-        //    console.log(file);
-        //    data.featured_image = 'changed'
-        //    console.log(data);
     }
 
     const slugTransform = useCallback((value) => {
@@ -127,6 +121,11 @@ function PostForm({post}) {
                 </div>
 
                 <div className='w-1/3  my-2 px-4'>
+                    <div className='my-2'>
+                        <div className='w-80 mx-auto'>
+                        {post && <img src={services.getFilePreview(post.featured_image)} />}
+                        </div>
+                    </div>
                     <div className='my-2'>
                         <Input
                             label='Featured Image:-'
