@@ -10,23 +10,16 @@ function EditPost() {
   const navigate = useNavigate()
   const { slug } = useParams()
   
-  // get the slug/urlPrams
-  // get the post from it
-  // set post to a variable and pass it to postForm
   const userData = useSelector((state) => state.user)
-  console.log(userData);
 
   
   useEffect(() => {
     if (slug) {
       services.getPost(slug).then((post) => {
-        console.log(typeof(post.user_id));
-        console.log(typeof(userData.$id));
         if (post && (userData ? (post.user_id === userData.$id) : false)) {
           setPost(post)
         }
         else {
-          console.log("user is not author of this post");
           navigate('/')
         }
       })

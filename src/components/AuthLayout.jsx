@@ -8,7 +8,6 @@ export default function AuthLayout({ children, authenticationRequired = true }) 
     const authStatus = useSelector((state) => state.status)
 
     useEffect(() => {
-        console.log('authlayout');
         if (authenticationRequired && authStatus !== authenticationRequired) {
             navigate('/login')
         }

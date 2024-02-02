@@ -21,9 +21,6 @@ function PostForm({post}) {
     const { errors } = formState // this cause rerendering of component when form is submitted.
     const userData = useSelector((state) => state.user)
 
-    console.log(userData);
-    // console.log(errors);
-
     const submit = async (data) => {
         if(post){
             // if post is recieved as a param then this means we have to update the post
