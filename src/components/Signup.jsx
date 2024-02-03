@@ -14,7 +14,7 @@ function Signup() {
     //     console.log(currentUser);
     // })()
     const {register, handleSubmit, formState} = useForm()
-    const [submissionError , setSubmissionError] = useState()
+    const [submissionError , setSubmissionError] = useState("")
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const {errors} = formState
@@ -25,13 +25,13 @@ function Signup() {
        if(user){
         const userData = await authServices.getCurrentUser()
         if(userData){
-            // TODO: dispatch user data
             dispatch(login({userData}))
-            // navigate the user to home
             navigate('/')
         }
        }
-       console.log(data)
+       else{
+        setSubmissionError("Some error occured. Try again later.")
+       }
     }
     
     return (
@@ -100,8 +100,9 @@ function Signup() {
                         >
                             {'Submit'}
                         </Button>
-                    </form>
+                    </form>                    
                 </div>
+                {submissionError && <div className='text-red-600 text-xl w-fit mx-auto my-6'>{submissionError}</div>}
             </Container>
 
         </div>

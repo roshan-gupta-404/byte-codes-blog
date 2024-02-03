@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from './Container'
 import Input from './form_components/Input'
 import { useForm } from 'react-hook-form'
@@ -10,15 +10,14 @@ import { useNavigate } from 'react-router-dom'
 
 function Login() {
     const { register, handleSubmit, formState } = useForm()
-    const { errors } = formState
+    const [submissionError, setSubmissionError] = useState()
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const { errors } = formState
 
     const submit = async (data) => {
-        console.log(data);
         try {
             const sessions = await authServices.login(data)
-            console.log(sessions);
             if (sessions) {
                 const userData = await authServices.getCurrentUser()
                 if(userData){
@@ -26,10 +25,12 @@ function Login() {
                     navigate('/')
                 }
             }
+            else{
+                setSubmissionError('Some error occured. Try again later.')
+            }
         } catch (error) {
             throw error
         }
-
     }
     return (
         <div>
@@ -85,6 +86,7 @@ function Login() {
                         </Button>
                     </form>
                 </div>
+                {submissionError && <div className='text-red-600 text-xl w-fit mx-auto my-6'>{submissionError}</div>}
             </Container>
         </div>
     )
