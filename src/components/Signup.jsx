@@ -35,7 +35,7 @@ function Signup() {
     }
     
     return (
-        <div className='my-4'>
+        <div className='my-6'>
             <Container>
                 <div className='text-white w-2/5 mx-auto border border-gray-700 rounded-2xl bg-slate-900'>
                     <div className="mb-4 flex flex-col items-center mt-4">

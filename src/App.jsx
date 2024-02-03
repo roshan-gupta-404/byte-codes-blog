@@ -1,11 +1,7 @@
 import Header from "./components/header/Header"
 import Footer from "./components/footer/Footer"
 // import Container from "./components/Container"
-import AddPost from "./pages/AddPost"
-import Signup from "./pages/Signup"
-import Login from "./pages/Login"
-import Post from "./pages/Post"
-import Home from "./pages/Home"
+import "./App.css"
 import { Outlet } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import authServices from './appwrite/auth'
@@ -31,7 +27,7 @@ function App() {
   }, [])
 
   return ( !loading ? (<>
-    <div className="min-h-screen bg-gray-950">
+    <div id="body" className="min-h-screen bg-gray-950">
 
       <Header />
       <main>

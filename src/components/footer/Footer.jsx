@@ -12,7 +12,7 @@ function Footer() {
 
   return (
     <>
-      <footer className="p-4">
+      <footer id="footer" className="p-4">
         <Container>
         <div className="flex justify-between text-white bottom-0 px-4">
           <div>

@@ -26,7 +26,7 @@ function Main() {
     return ( (posts?.length) ? (<div className='text-white my-4'>
     <Container>
         <div id='blog-card-container'
-        className='w-3/4 border mx-auto'
+        className='w-3/4  mx-auto'
         >
             {posts.map((post)=>(
                 <div key={post.$id}>
