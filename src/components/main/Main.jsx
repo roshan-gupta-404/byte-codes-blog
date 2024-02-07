@@ -13,7 +13,6 @@ function Main() {
     useEffect(()=>{
         services.getAllPosts().then((post) => {
             if(post){
-                console.log(post);
                 setPosts(post.documents)
             }
             else{

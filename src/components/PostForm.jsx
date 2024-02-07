@@ -38,7 +38,6 @@ function PostForm({post}) {
             }
         }
         else{
-            console.log(data);
             try {
                 // first uplaod image.
                 const file = await services.uploadFile(data.featured_image[0])    

@@ -9,10 +9,6 @@ import {login} from '../store/authSlice'
 import { useNavigate } from 'react-router-dom'
 
 function Signup() {
-    // (async ()=>{
-    //     const currentUser = await authServices.getCurrentUser()
-    //     console.log(currentUser);
-    // })()
     const {register, handleSubmit, formState} = useForm()
     const [submissionError , setSubmissionError] = useState("")
     const navigate = useNavigate()

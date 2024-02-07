@@ -28,9 +28,6 @@ function Header() {
           active: authStatus
         }
       ]
-    // const user = useSelector((state)=>state.user)
-    // console.log(authStatus);
-    // console.log(user);
     return (
         <header className='bg-gray-950 text-white  text-2xl'>
             <Container>

@@ -13,7 +13,6 @@ function Post() {
     const navigate = useNavigate()
 
     const userData = useSelector((state) => state.user);
-    console.log(userData);
     const isAuthor = post && (userData ? post.user_id === userData.$id : false);
 
     function convertTextToDate(dateText) {
