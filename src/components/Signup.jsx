@@ -49,6 +49,7 @@ function Signup() {
                     </div>
 
                     <form className='w-4/5 mx-auto' onSubmit={handleSubmit(submit)}>
+                    <div className = 'mb-2'>
                         <Input
                             label='Name:-'
                             placeholder='Enter your name'
@@ -60,6 +61,8 @@ function Signup() {
                                 })}
                         />
                         {<span className='text-red-500'> &nbsp; {errors.name?.message}</span>}
+                        </div>
+                        <div className = 'mb-2'>
                         <Input
                             label='Email:-'
                             type={'email'}
@@ -72,6 +75,8 @@ function Signup() {
                                 })}
                         />
                         {<span className='text-red-500'> &nbsp; {errors.email?.message}</span>}
+                        </div>
+                        <div className = 'mb-2'>
                         <Input
                             label='Password:-'
                             type={'password'}
@@ -84,6 +89,8 @@ function Signup() {
                                 })}
                         />
                         {<span className='text-red-500'> &nbsp; {errors.password?.message}</span>}
+                        </div>
+                        <div className = 'mb-2'>
                         <Input
                             label='Auth Key:-'
                             placeholder='Enter your Auth Key'
@@ -95,6 +102,7 @@ function Signup() {
                                 })}
                         />
                         {<span className='text-red-500'> &nbsp; {errors.auth_key?.message}</span>}
+                        </div>
                         <Button
                             className={`text-white text-2xl block font-semibold my-4 bg-blue-700 w-1/2 mx-auto p-1 rounded-md hover:bg-blue-800`}
                         >

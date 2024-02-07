@@ -11,7 +11,9 @@ function Post() {
     const [post, setPost] = useState()
     const[loader, setLoader] = useState(true)
     const navigate = useNavigate()
+
     const userData = useSelector((state) => state.user);
+    console.log(userData);
     const isAuthor = post && (userData ? post.user_id === userData.$id : false);
 
     function convertTextToDate(dateText) {
@@ -50,6 +52,7 @@ function Post() {
             throw err
         });
     },[])
+
     return ( loader ? (<div className='text-white my-4'>
     <Container>
         <div id='blog-card-container'

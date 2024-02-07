@@ -21,7 +21,7 @@ function Login() {
             if (sessions) {
                 const userData = await authServices.getCurrentUser()
                 if(userData){
-                    dispatch(login(userData))
+                    dispatch(login({userData}))
                     navigate('/')
                 }
             }
@@ -59,7 +59,7 @@ function Login() {
                                     },
                                 })}
                             />
-                            {<span className='text-red-500'> &nbsp; {errors.email?.message}</span>}
+                            {<span className='text-red-500'> &nbsp;{errors.email?.message}</span>}
                         </div>
 
 
