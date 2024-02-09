@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import authServices from '../appwrite/auth'
 import { useDispatch } from 'react-redux'
 import { login } from '../store/authSlice'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import conf from '../conf/conf'
 
 function Signup() {
@@ -40,14 +40,14 @@ function Signup() {
     return (
         <div className='my-6'>
             <Container>
-                <div className='text-white w-2/5 mx-auto border border-gray-700 rounded-2xl bg-slate-900'>
+                <div className='text-white w-4/5 sm:w-2/5 mx-auto border border-gray-700 rounded-2xl bg-slate-900'>
                     <div className="mb-4 flex flex-col items-center mt-4">
                         <span className="inline-block w-fit text-xl">
                             ByteCodes Blog
                         </span>
-                        <h2 className='text-3xl mt-4'>Signup to create account</h2>
-                        <span className='mt-2'>
-                            Already have an account? Sign In
+                        <h2 className='text-xl mt-4'>Signup to create account</h2>
+                        <span className='text-xs sm:text-sm mt-2'>
+                        <Link to={'/login'}>Already have an account? Sign In</Link>
                         </span>
                     </div>
 

@@ -31,43 +31,23 @@ function Header() {
     return (
         <header className='bg-gray-950 text-white  text-2xl'>
             <Container>
-                <nav className='flex justify-between  py-3 '>
+                <nav className='sm:flex justify-between py-3 sm:border-b border-slate-500 '>
 
-                    <div className='ml-2'>
+                    <div className='flex justify-center text-2xl sm:ml-2 mb-2 sm:mb-0 '>
                         ByteCodes Blog
                     </div>
 
-                    <div className=''>
-                        <ul className='flex ml-auto'>
+                    <div className='flex justify-center border-y pb-2 sm:pb-0 border-slate-500 sm:border-y-0'>
+                        <ul className='flex sm:ml-auto'>
                         {navItems.map((menu)=>(
                             menu.active ?
                             (<Link key={menu.name} to={menu.slug}>
-                                <li className='mx-2 hover:text-yellow-500 duration-300'>
+                                <li className='mx-3 text-xl hover:text-yellow-500 duration-300'>
                                     {menu.name}
                                 </li>
                             </Link>)
                             : null
                         ))}
-                            {/* <Link to={"/"}>
-                                <li className='mx-2 hover:text-yellow-500 duration-300'>
-                                    Home
-                                </li>
-                            </Link>
-                            <Link to={"/signup"}>
-                                <li className='mx-2 hover:text-yellow-500 duration-300'>
-                                    Sign Up
-                                </li>
-                            </Link>
-                            <Link to={"/login"}>
-                                <li className='mx-2 hover:text-yellow-500 duration-300'>
-                                    Login
-                                </li>
-                            </Link> */}
-                            {/* <Link to={"/add-post"}>
-                                <li className='mx-2 hover:text-yellow-500 duration-300'>
-                                    AddPost
-                                </li>
-                            </Link> */}
                             {authStatus && <LogoutBtn/>}
                         </ul>
                     </div>

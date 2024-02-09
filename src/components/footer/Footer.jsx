@@ -6,31 +6,31 @@ import Container from "../Container";
 
 function Footer() {
   const iconsTab = [
-    { icon: <CiLinkedin />,name:'linkedIn' },
-    { icon: <LuGithub />,name:'github' }
+    { icon: <CiLinkedin />, name: 'linkedIn' },
+    { icon: <LuGithub />, name: 'github' }
   ];
 
   return (
     <>
-      <footer id="footer" className="p-4">
+      <footer id="footer" className="p-4 border-t border-t-slate-500">
         <Container>
-        <div className="flex justify-between text-white bottom-0 px-4">
-          <div>
-            <p> &copy; 2024 ByteCodes Blog. All rights reserved.</p>
+          <div className="flex flex-col-reverse sm:flex-row sm justify-between items-center text-white bottom-0 px-4">
+            <div>
+              <p className="text-center"> &copy; 2024 ByteCodes Blog. All rights reserved.</p>
+            </div>
+            <div className="flex justify-around">
+              {iconsTab.map((item) => {
+                return (
+                  <div className="text-3xl sm:text-5xl mx-2 hover:text-orange-200 duration-300"
+                    key={item.name}
+                  >
+                    {item.icon}
+                  </div>
+                )
+              })}
+            </div>
           </div>
-          <div className="flex justify-around">
-          {iconsTab.map((item)=>{
-            return (
-              <div className="text-5xl w-16 hover:text-orange-200 duration-300"
-              key={item.name}
-              >
-                {item.icon}
-              </div>
-            )
-          })}
-          </div>
-        </div>
-          
+
         </Container>
 
 
@@ -71,7 +71,7 @@ function Footer() {
 //                 goals.
 //               </p>
 //               {/* socials */}
-              
+
 //               <p className="text-16px font-medium text-#646464">
 //                 Privacy Policy | © {new Date().getFullYear()} Gymate <br />{" "}
 //                 {"  "}

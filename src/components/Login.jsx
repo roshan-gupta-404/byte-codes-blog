@@ -33,14 +33,14 @@ function Login() {
         }
     }
     return (
-        <div>
+        <div className='my-6'>
             <Container>
-                <div className='text-white w-2/5 mx-auto border border-gray-700 rounded-2xl bg-slate-900'>
+                <div className='text-white sm:w-2/5 w-4/5 mx-auto my-4 border border-gray-700 rounded-2xl bg-slate-900'>
                     <div className="mb-4 flex flex-col items-center mt-4">
                         <span className="inline-block w-fit text-xl">
                             ByteCodes Blog
                         </span>
-                        <h2 className='text-3xl mt-4'>Login to your account</h2>
+                        <h2 className='text-xl mt-4'>Login to your account</h2>
                         <span className='mt-2'>
                             Don't have an account? Sign Up
                         </span>
