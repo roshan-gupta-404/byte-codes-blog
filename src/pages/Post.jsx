@@ -5,6 +5,7 @@ import services from '../appwrite/config'
 import parse from 'html-react-parser';
 import { useSelector } from 'react-redux';
 import Button from '../components/form_components/Button';
+import '../postPage.css'
 
 function Post() {
     const {slug} = useParams()
@@ -82,10 +83,10 @@ function Post() {
                             <p className='font-thin text-sm'>{convertTextToDate(post.date).toLocaleDateString()}</p>
                         </div>
                         <div className='bg-slate-900 flex flex-col items-center pt-40'>
-                            <div className=' w-80 absolute -translate-y-60 rounded-xl overflow-hidden'>
+                            <div className=' max-w-80 absolute -translate-y-60 rounded-xl overflow-hidden'>
                                 <img src={services.getFilePreview(post.featured_image)} />
                             </div>
-                            <div className='w-3/4 mt- mb-8 text-justify'>
+                            <div className='w-3/4 mt- mb-8 '>
                                {parse(post.content)}
                             </div>
                         </div>

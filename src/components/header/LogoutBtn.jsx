@@ -12,7 +12,7 @@ function LogoutBtn() {
   const logoutHandler = () => {
     authService.logout().then(() => {
       dispatch(logout())
-      location.replace("http://localhost:5173/"); // navigating the user to fresh website so that necessary functinon in app can also load.
+      location.replace("https://byte-codes-blog.vercel.app/"); // navigating the user to fresh website so that necessary functinon in app can also load.
     })
   }
   

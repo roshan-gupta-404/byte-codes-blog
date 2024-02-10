@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from '../Container'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import LogoutBtn from './LogoutBtn'
 import { useSelector } from 'react-redux'
 
@@ -29,12 +29,12 @@ function Header() {
         }
       ]
     return (
-        <header className='bg-gray-950 text-white  text-2xl'>
+        <header className='bg-gray-950 text-white sm:border-b border-slate-500 text-2xl'>
             <Container>
-                <nav className='sm:flex justify-between py-3 sm:border-b border-slate-500 '>
+                <nav className='sm:flex justify-between py-3  '>
 
                     <div className='flex justify-center text-2xl sm:ml-2 mb-2 sm:mb-0 '>
-                        ByteCodes Blog
+                        <Link to={'/'}>ByteCodes Blog</Link>
                     </div>
 
                     <div className='flex justify-center border-y pb-1 sm:pb-0 border-slate-500 sm:border-y-0'>
