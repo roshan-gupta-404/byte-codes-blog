@@ -43,7 +43,7 @@ const router = createBrowserRouter([
         {
             path: "/add-post",
             element: (
-                <AuthLayout authenticationRequired={false}>
+                <AuthLayout authenticationRequired>
                     {" "}
                     <AddPost />
                 </AuthLayout>
