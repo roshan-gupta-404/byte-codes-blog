@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from '../Container'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import LogoutBtn from './LogoutBtn'
 import { useSelector } from 'react-redux'
 
@@ -25,7 +25,7 @@ function Header() {
         {
           name: 'Add Posts',
           slug: "/add-post",
-          active: authStatus
+          active: !authStatus
         }
       ]
     return (
@@ -37,15 +37,15 @@ function Header() {
                         ByteCodes Blog
                     </div>
 
-                    <div className='flex justify-center border-y pb-2 sm:pb-0 border-slate-500 sm:border-y-0'>
+                    <div className='flex justify-center border-y pb-1 sm:pb-0 border-slate-500 sm:border-y-0'>
                         <ul className='flex sm:ml-auto'>
                         {navItems.map((menu)=>(
                             menu.active ?
-                            (<Link key={menu.name} to={menu.slug}>
+                            (<NavLink key={menu.name} to={menu.slug} className={({isActive})=>`${isActive?'text-yellow-500':''}`}>
                                 <li className='mx-3 text-xl hover:text-yellow-500 duration-300'>
                                     {menu.name}
                                 </li>
-                            </Link>)
+                            </NavLink>)
                             : null
                         ))}
                             {authStatus && <LogoutBtn/>}

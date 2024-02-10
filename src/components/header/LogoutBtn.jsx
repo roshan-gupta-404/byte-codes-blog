@@ -19,7 +19,7 @@ function LogoutBtn() {
   return (
     <div
       onClick={logoutHandler}
-      className='inline-block mx-2 duration-200 hover:text-yellow-500 hover:cursor-pointer rounded-full'
+      className='inline-block mx-2 duration-200 text-xl hover:text-yellow-500 hover:cursor-pointer rounded-full'
     >Logout</div>
   )
 }

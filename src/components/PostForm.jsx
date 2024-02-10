@@ -77,8 +77,8 @@ function PostForm({post}) {
     }, [watch, slugTransform, setValue])
     return (
         <>
-            <form className='flex flex-wrap' onSubmit={handleSubmit(submit)}>
-                <div className='w-2/3  my-2 px-4'>
+            <form className='flex flex-col md:flex-row' onSubmit={handleSubmit(submit)}>
+                <div className='md:w-2/3  my-2 px-4'>
                     <div className='my-2'>
                         <Input
                             label='Title:-'
@@ -119,9 +119,9 @@ function PostForm({post}) {
                     />
                 </div>
 
-                <div className='w-1/3  my-2 px-4'>
+                <div className='md:w-1/3  my-2 px-4'>
                     <div className='my-2'>
-                        <div className='w-80 mx-auto'>
+                        <div className='sm:w-full rounded-xl overflow-hidden mx-auto'>
                         {post && <img src={services.getFilePreview(post.featured_image)} />}
                         </div>
                     </div>
@@ -129,7 +129,7 @@ function PostForm({post}) {
                         <Input
                             label='Featured Image:-'
                             type='file'
-                            className={`pt-1 text`}
+                            className={`pt-1`}
                             {...register('featured_image', {
                                 required: {
                                     value: !post,
