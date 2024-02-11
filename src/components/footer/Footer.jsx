@@ -3,11 +3,12 @@ import { LuGithub } from "react-icons/lu";
 
 import { BiLogoPinterestAlt } from "react-icons/bi";
 import Container from "../Container";
+import { Link } from "react-router-dom";
 
 function Footer() {
   const iconsTab = [
-    { icon: <CiLinkedin />, name: 'linkedIn' },
-    { icon: <LuGithub />, name: 'github' }
+    { icon: <CiLinkedin />, name: 'linkedIn',url:'https://www.linkedin.com/in/roshan-gupta-2611792a3/' },
+    { icon: <LuGithub />, name: 'github',url:'https://github.com/roshan-gupta-404' }
   ];
 
   return (
@@ -24,7 +25,9 @@ function Footer() {
                   <div className="text-3xl sm:text-5xl mx-2 hover:text-orange-200 duration-300"
                     key={item.name}
                   >
+                  <Link to={item.url}>
                     {item.icon}
+                  </Link>
                   </div>
                 )
               })}
