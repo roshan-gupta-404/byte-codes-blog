@@ -64,7 +64,7 @@ function Post() {
     </div>) : (<>
         <div className='text-white'>
             <Container>
-                <div className=''>
+                <div className='' id='article_content'>
                     <div className='relative bg-slate-800 h-56 flex flex-col items-center pt-14'>
                         {isAuthor && (
                             <div className="absolute right-20 top-20">

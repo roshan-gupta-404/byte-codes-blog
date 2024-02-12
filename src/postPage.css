@@ -13,9 +13,9 @@ table, td, th {
     border-collapse: collapse;
 }
 
-ul{
+#article_content ul{
     @apply list-disc ml-4;
 }
-ol{
+#article_content ol{
     @apply list-decimal ml-4;
 }
