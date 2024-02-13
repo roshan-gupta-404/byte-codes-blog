@@ -19,3 +19,6 @@ table, td, th {
 #article_content ol{
     @apply list-decimal ml-4;
 }
+#article_content ._codes{
+    @apply overflow-x-auto;
+}

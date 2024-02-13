@@ -86,7 +86,7 @@ function Post() {
                         <div className=' max-w-80 absolute -translate-y-60 rounded-xl overflow-hidden'>
                             <img src={services.getFilePreview(post.featured_image)} />
                         </div>
-                        <div className='w-3/4 mt- mb-8 '>
+                        <div className='w-3/4 text-gray-400 mb-8 '>
                             {parse(post.content)}
                         </div>
                     </div>
